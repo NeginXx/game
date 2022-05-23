@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Engine.h
+stdint.h
+-
+
+../include/MainScene.h
+vector
+-
+Shape.h
+../include/Shape.h
+
+../include/Renderer.h
+cstdint
+-
+
+../include/Shape.h
+Vec2.h
+../include/Vec2.h
+
+../include/Vec2.h
+cstdint
+-
+
+/home/xia/work/game/game/src/Game.cpp
+Renderer.h
+/home/xia/work/game/game/src/Renderer.h
+Engine.h
+/home/xia/work/game/game/src/Engine.h
+MainScene.h
+/home/xia/work/game/game/src/MainScene.h
+stdlib.h
+-
+memory.h
+-
+cstdio
+-
+cmath
+-
+
