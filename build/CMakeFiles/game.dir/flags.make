@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/xia/work/game/game/include 
+CXX_INCLUDES = -I/home/xia/work/game/include 
 

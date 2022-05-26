@@ -4,17 +4,28 @@
 CMakeFiles/game.dir/src/Engine.cpp.o: ../include/Engine.h
 CMakeFiles/game.dir/src/Engine.cpp.o: ../src/Engine.cpp
 
+CMakeFiles/game.dir/src/Event.cpp.o: ../include/Event.h
+CMakeFiles/game.dir/src/Event.cpp.o: ../src/Event.cpp
+
 CMakeFiles/game.dir/src/Game.cpp.o: ../include/Engine.h
+CMakeFiles/game.dir/src/Game.cpp.o: ../include/Event.h
 CMakeFiles/game.dir/src/Game.cpp.o: ../include/MainScene.h
 CMakeFiles/game.dir/src/Game.cpp.o: ../include/Renderer.h
 CMakeFiles/game.dir/src/Game.cpp.o: ../include/Shape.h
 CMakeFiles/game.dir/src/Game.cpp.o: ../include/Vec2.h
 CMakeFiles/game.dir/src/Game.cpp.o: ../src/Game.cpp
 
+CMakeFiles/game.dir/src/MainScene.cpp.o: ../include/Event.h
 CMakeFiles/game.dir/src/MainScene.cpp.o: ../include/MainScene.h
+CMakeFiles/game.dir/src/MainScene.cpp.o: ../include/Physics.h
 CMakeFiles/game.dir/src/MainScene.cpp.o: ../include/Shape.h
 CMakeFiles/game.dir/src/MainScene.cpp.o: ../include/Vec2.h
 CMakeFiles/game.dir/src/MainScene.cpp.o: ../src/MainScene.cpp
+
+CMakeFiles/game.dir/src/Physics.cpp.o: ../include/Physics.h
+CMakeFiles/game.dir/src/Physics.cpp.o: ../include/Shape.h
+CMakeFiles/game.dir/src/Physics.cpp.o: ../include/Vec2.h
+CMakeFiles/game.dir/src/Physics.cpp.o: ../src/Physics.cpp
 
 CMakeFiles/game.dir/src/Renderer.cpp.o: ../include/Renderer.h
 CMakeFiles/game.dir/src/Renderer.cpp.o: ../include/Vec2.h
@@ -28,4 +39,7 @@ CMakeFiles/game.dir/src/Shape.cpp.o: ../include/SceneRenderer.h
 CMakeFiles/game.dir/src/Shape.cpp.o: ../include/Shape.h
 CMakeFiles/game.dir/src/Shape.cpp.o: ../include/Vec2.h
 CMakeFiles/game.dir/src/Shape.cpp.o: ../src/Shape.cpp
+
+CMakeFiles/game.dir/src/Vec2.cpp.o: ../include/Vec2.h
+CMakeFiles/game.dir/src/Vec2.cpp.o: ../src/Vec2.cpp
 

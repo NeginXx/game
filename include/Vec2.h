@@ -1,4 +1,6 @@
+#pragma once
 #include <cstdint>
+#include <cmath>
 
 template <typename T>
 struct Vec2 {
@@ -14,10 +16,22 @@ struct Vec2 {
     y -= v.y;
     return *this;
   }
+  Vec2& operator/=(T val) {
+    x /= val;
+    y /= val;
+    return *this;
+  }
   Vec2 operator-() {
     return Vec2{-x, -y};
   }
 };
+
+float Length(const Vec2<float>& v);
+
+template <typename T>
+T DotProduct(const Vec2<T>& v1, const Vec2<T>& v2) {
+  return v1.x * v2.x + v1.y * v2.y;
+}
 
 template <typename T>
 Vec2<T> operator*(T c, const Vec2<T>& v) {

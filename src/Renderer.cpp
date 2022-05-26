@@ -59,26 +59,36 @@ void SetPixelInRow(int32_t y_row, int32_t x1, int32_t x2, uint32_t color) {
   }
 }
 
-void DrawCircle(int32_t center_x, int32_t center_y, uint32_t radius, uint32_t color) {
-  int32_t x1 = center_x - radius;
-  int32_t x2 = center_x + radius;
-  int32_t y1 = center_y - radius;
-  int32_t y2 = center_y + radius;
+inline bool IsInCircle(int32_t c_x, int32_t c_y, int32_t x, int32_t y, uint32_t r2) {
+  return (c_x - x) * (c_x - x) + (c_y - y) * (c_y - y) <= r2;
+}
+
+void FillCircle(int32_t center_x, int32_t center_y,
+                uint32_t radius, uint32_t main_color,
+                uint32_t frame_color) {
+  int32_t c_x = center_x;
+  int32_t c_y = center_y;
+
+  int32_t x1 = c_x - radius;
+  int32_t x2 = c_x + radius;
+  int32_t y1 = c_y - radius;
+  int32_t y2 = c_y + radius;
 
   uint32_t r2 = radius * radius;  
 
-  for(int32_t y = y1; y < y2; ++y) {
-    for(int32_t x = x1; x < x2; ++x) {
-      if ((center_x - x) * (center_x - x) + (center_y - y) * (center_y - y) <= r2) {
-        SetPixel(x, y, color);
+  for (int32_t y = y1; y < y2; ++y) {
+    for (int32_t x = x1; x < x2; ++x) {
+      if (IsInCircle(c_x, c_y, x, y, r2)) {
+        if (!IsInCircle(c_x, c_y, x + 1, y, r2) || !IsInCircle(c_x, c_y, x - 1, y, r2) ||
+            !IsInCircle(c_x, c_y, x, y - 1, r2) || !IsInCircle(c_x, c_y, x, y + 1, r2)) {
+          SetPixel(x, y, frame_color);
+        } else {
+          SetPixel(x, y, main_color);
+        }
       }
     }
   }
 }
-
-// void DrawCircle(int32_t center_x, int32_t center_y, uint32_t radius, uint32_t color) {
-  
-// }
 
 void DrawLine(int32_t x1, int32_t y1, int32_t x2, int32_t y2, uint32_t color) {
   assert(x1 >= 0 && x1 < kBuffer.width);
@@ -158,17 +168,18 @@ enum SideName {
 };
 
 // Bresenham algorithm
-void FillRect(int32_t center_x, int32_t center_y,
-              uint32_t width, uint32_t height,
-              float angle, uint32_t color) {
+void FillRectangle(int32_t center_x, int32_t center_y,
+                   uint32_t width, uint32_t height,
+                   float angle, uint32_t main_color,
+                   uint32_t frame_color) {
   float sin = std::sin(angle);
   float cos = std::cos(angle);
   Vec2f a = static_cast<float>(width) / 2.0f * Vec2f{cos, sin};
   Vec2f b = static_cast<float>(height) / 2.0f * Vec2f{-sin, cos};
   Vec2f np = a + b; // north point
   Vec2f wp = b - a; // west point
-  Vec2f sp = -np;
   Vec2f ep = -wp;
+  Vec2f sp = -np;
 
   Vec2f rect_vertices[4] = {np, wp, ep, sp};
 
@@ -196,17 +207,17 @@ void FillRect(int32_t center_x, int32_t center_y,
   e += center;
   s += center;
 
-  RectSide side_nw{n.x, n.y, w.x, w.y, color};
-  RectSide side_ne{n.x, n.y, e.x, e.y, color};
-  RectSide side_ws{w.x, w.y, s.x, s.y, color};
-  RectSide side_es{e.x, e.y, s.x, s.y, color};
+  RectSide side_nw{n.x, n.y, w.x, w.y, frame_color};
+  RectSide side_ne{n.x, n.y, e.x, e.y, frame_color};
+  RectSide side_ws{w.x, w.y, s.x, s.y, frame_color};
+  RectSide side_es{e.x, e.y, s.x, s.y, frame_color};
 
   RectSide sides[4] = {side_nw, side_ne, side_ws, side_es};
   // FIXME: such a noodle code, but it works and i don't know how to fix this
   SideName name0 = kNW;
   SideName name1 = kNE;
   while (true) {
-    SetPixelInRow(sides[name0].cur_coord.y, sides[name0].cur_coord.x, sides[name1].cur_coord.x, sides[name0].color);
+    SetPixelInRow(sides[name0].cur_coord.y, sides[name0].cur_coord.x, sides[name1].cur_coord.x, main_color);
     bool is_finished0 = sides[name0].DrawWhileNotProceed();
     bool is_finished1 = sides[name1].DrawWhileNotProceed();
 

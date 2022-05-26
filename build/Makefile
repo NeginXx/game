@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xia/work/game/game
+CMAKE_SOURCE_DIR = /home/xia/work/game
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xia/work/game/game/build
+CMAKE_BINARY_DIR = /home/xia/work/game/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xia/work/game/game/build/CMakeFiles /home/xia/work/game/game/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xia/work/game/build/CMakeFiles /home/xia/work/game/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xia/work/game/game/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xia/work/game/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -150,6 +150,33 @@ src/Engine.cpp.s:
 	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/Engine.cpp.s
 .PHONY : src/Engine.cpp.s
 
+src/Event.o: src/Event.cpp.o
+
+.PHONY : src/Event.o
+
+# target to build an object file
+src/Event.cpp.o:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/Event.cpp.o
+.PHONY : src/Event.cpp.o
+
+src/Event.i: src/Event.cpp.i
+
+.PHONY : src/Event.i
+
+# target to preprocess a source file
+src/Event.cpp.i:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/Event.cpp.i
+.PHONY : src/Event.cpp.i
+
+src/Event.s: src/Event.cpp.s
+
+.PHONY : src/Event.s
+
+# target to generate assembly for a file
+src/Event.cpp.s:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/Event.cpp.s
+.PHONY : src/Event.cpp.s
+
 src/Game.o: src/Game.cpp.o
 
 .PHONY : src/Game.o
@@ -203,6 +230,33 @@ src/MainScene.s: src/MainScene.cpp.s
 src/MainScene.cpp.s:
 	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/MainScene.cpp.s
 .PHONY : src/MainScene.cpp.s
+
+src/Physics.o: src/Physics.cpp.o
+
+.PHONY : src/Physics.o
+
+# target to build an object file
+src/Physics.cpp.o:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/Physics.cpp.o
+.PHONY : src/Physics.cpp.o
+
+src/Physics.i: src/Physics.cpp.i
+
+.PHONY : src/Physics.i
+
+# target to preprocess a source file
+src/Physics.cpp.i:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/Physics.cpp.i
+.PHONY : src/Physics.cpp.i
+
+src/Physics.s: src/Physics.cpp.s
+
+.PHONY : src/Physics.s
+
+# target to generate assembly for a file
+src/Physics.cpp.s:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/Physics.cpp.s
+.PHONY : src/Physics.cpp.s
 
 src/Renderer.o: src/Renderer.cpp.o
 
@@ -285,6 +339,33 @@ src/Shape.cpp.s:
 	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/Shape.cpp.s
 .PHONY : src/Shape.cpp.s
 
+src/Vec2.o: src/Vec2.cpp.o
+
+.PHONY : src/Vec2.o
+
+# target to build an object file
+src/Vec2.cpp.o:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/Vec2.cpp.o
+.PHONY : src/Vec2.cpp.o
+
+src/Vec2.i: src/Vec2.cpp.i
+
+.PHONY : src/Vec2.i
+
+# target to preprocess a source file
+src/Vec2.cpp.i:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/Vec2.cpp.i
+.PHONY : src/Vec2.cpp.i
+
+src/Vec2.s: src/Vec2.cpp.s
+
+.PHONY : src/Vec2.s
+
+# target to generate assembly for a file
+src/Vec2.cpp.s:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/Vec2.cpp.s
+.PHONY : src/Vec2.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -297,12 +378,18 @@ help:
 	@echo "... src/Engine.o"
 	@echo "... src/Engine.i"
 	@echo "... src/Engine.s"
+	@echo "... src/Event.o"
+	@echo "... src/Event.i"
+	@echo "... src/Event.s"
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"
 	@echo "... src/MainScene.o"
 	@echo "... src/MainScene.i"
 	@echo "... src/MainScene.s"
+	@echo "... src/Physics.o"
+	@echo "... src/Physics.i"
+	@echo "... src/Physics.s"
 	@echo "... src/Renderer.o"
 	@echo "... src/Renderer.i"
 	@echo "... src/Renderer.s"
@@ -312,6 +399,9 @@ help:
 	@echo "... src/Shape.o"
 	@echo "... src/Shape.i"
 	@echo "... src/Shape.s"
+	@echo "... src/Vec2.o"
+	@echo "... src/Vec2.i"
+	@echo "... src/Vec2.s"
 .PHONY : help
 
 
